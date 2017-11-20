@@ -4,7 +4,7 @@ Adds an item collector + the technology to unlock it. The item collector itself 
 
 # Forum Post
 
-
+https://forums.factorio.com/viewtopic.php?f=93&t=54098
 
 # Notes
 
