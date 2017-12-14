@@ -4,7 +4,7 @@
   (require file/zip)
   (require json)
   
-  (define modFolder "/home/veden/.factorio/mods/")
+  (define modFolder "/data/games/factorio/mods/")
   (define zipModFolder "/data/games/factorio/mods/")
   (define configuration (call-with-input-file "info.json"
                           (lambda (port)
@@ -26,6 +26,7 @@
          (string->path "info.json")
          (string->path "control.lua")
          (string->path "data.lua")
+         (string->path "changelog.txt")
          (string->path "LICENSE.md")
          (string->path "settings.lua")
          (string->path "README.md")
@@ -60,6 +61,7 @@
       (copyFile "info.json" modFolder)
       (copyFile "data.lua" modFolder)
       (copyFile "LICENSE.md" modFolder)
+      (copyFile "changelog.txt" modFolder)
       (copyFile "settings.lua" modFolder)
       (copyFile "NOTICE" modFolder)
       (copyDirectory "libs" modFolder)

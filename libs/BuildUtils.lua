@@ -56,18 +56,22 @@ function buildUtils.mineComplexEntity(entity, world, destroyed)
 
 	    if chest and chest.valid then
 		world.itemCollectorLookup[chest.unit_number] = nil
-		if destroyed then
-		    chest.die()
-		else
-		    chest.destroy()
+		if (entity ~= chest) then
+		    if destroyed then
+			chest.die()
+		    else
+			chest.destroy()
+		    end
 		end
 	    end
 	    if dish and dish.valid then
 		world.itemCollectorLookup[dish.unit_number] = nil
-		if destroyed then
-		    dish.die()
-		else
-		    dish.destroy()
+		if (entity ~= dish) then
+		    if destroyed then
+			dish.die()
+		    else
+			dish.destroy()
+		    end
 		end
 	    end
 	end
