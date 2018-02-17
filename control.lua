@@ -39,7 +39,7 @@ local world
 -- module code
 
 -- local function onModSettingsChange(event)
-    
+
 --     return true
 -- 
 
@@ -119,14 +119,20 @@ end
 
 local function onConfigChanged()
     if not world.version then
-	world.processTick = (math.ceil(game.tick / INTERVAL_LOGIC) + 1) * INTERVAL_LOGIC
+	--world.processTick = (math.ceil(game.tick / INTERVAL_LOGIC) + 1) * INTERVAL_LOGIC
 	
 	world.itemCollectorEvents = {}
 	world.itemCollectorLookup = {}
 
 	world.version = 1
     end
-    
+    if (world.version < 2) then
+
+	world.processTick = nil
+
+	game.surfaces[1].print("Item Collector - Version 0.16.1")
+    	world.version = 2
+    end
 end
 
 local function onInit()
@@ -148,14 +154,10 @@ local function onDeath(event)
     end
 end
 
-local function onTick(event)
-    local tick = event.tick
-    if (tick == world.processTick) then
-	world.processTick = world.processTick + INTERVAL_LOGIC
-
-	processWorld(world)
-    end
-end
+script.on_nth_tick(INTERVAL_LOGIC,
+		   function (event)
+		       processWorld(world)
+end)
 
 -- hooks
 
@@ -176,4 +178,4 @@ script.on_event({defines.events.on_built_entity,
                  defines.events.on_robot_built_entity}, onBuild)
 
 script.on_event(defines.events.on_entity_died, onDeath)
-script.on_event(defines.events.on_tick, onTick)
+--script.on_event(defines.events.on_tick, onTick)

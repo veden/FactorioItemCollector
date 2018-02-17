@@ -1,10 +1,10 @@
 {
     "name" : "ItemCollector",
     "factorio_version" : "0.16",
-    "version" : "0.16.0",
+    "version" : "0.16.1",
     "title" : "Item Collector",
     "author" : "Veden",
     "homepage" : "https://forums.factorio.com/viewtopic.php?f=93&t=54098",
     "description" : "Adds an item collector + the technology to unlock it. The item collector itself can have its storage connected through wires and the collection process requires power.",
-    "dependencies" : ["base >= 0.16.0"]
+    "dependencies" : ["base >= 0.16.24"]
 }
