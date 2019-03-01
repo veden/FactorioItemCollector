@@ -14,9 +14,9 @@ function playerUtils.getPlayerInventory(player, withChar, withoutChar)
     local inventory = nil
     if player and player.valid and player.connected then
 	if player.character and player.character.valid then
-	    inventory = player.character.get_inventory(withChar)
+	    inventory = player.character.get_main_inventory(withChar)
 	else
-	    inventory = player.get_inventory(withoutChar)
+	    inventory = player.get_main_inventory(withoutChar)
 	end
     end
     return inventory

@@ -18,7 +18,7 @@ function buildUtils.buildComplexEntity(entity, world)
 	    entity = surface.create_entity({name="item-collector-base-item-collector",
 					    position = position,
 					    force = force})
-	else	    
+	else
 	    local ghosts = surface.find_entities_filtered({name="entity-ghost",
 							   area={{x=x-1,
 								  y=y-1},
@@ -30,6 +30,10 @@ function buildUtils.buildComplexEntity(entity, world)
 		if (ghost.ghost_name == "item-collector-chest-item-collector") then
 		    local conflicts
 		    conflicts, chest = ghost.revive()
+                elseif (ghost.ghost_name == "item-collector-base-item-collector") then
+                    chest = surface.create_entity({name = "item-collector-chest-item-collector",
+                                                   position = position,
+                                                   force = force})                    
 		end
 	    else
 		chest = surface.create_entity({name = "item-collector-chest-item-collector",

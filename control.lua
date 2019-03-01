@@ -92,20 +92,6 @@ local function onMainInventoryChanged(event)
 		      "item-collector-base-item-collector")
 end
 
-local function onQuickInventoryChanged(event)
-    local player = game.players[event.player_index]
-    local inventory = getPlayerInventory(player,
-					 DEFINES_INVENTORY_PLAYER_QUICKBAR,
-					 DEFINES_INVENTORY_GOD_QUICKBAR)
-    swapItemInventory(inventory,
-		      "item-collector-base-overlay-item-collector",
-		      "item-collector-base-item-collector")
-    topOffHand(inventory,
-	       player.cursor_stack,
-	       "item-collector-base-item-collector",
-	       "item-collector-base-overlay-item-collector")
-end
-
 
 local function onScannedSector(event)
     local radar = event.radar
@@ -168,7 +154,6 @@ script.on_configuration_changed(onConfigChanged)
 script.on_event(defines.events.on_player_cursor_stack_changed, onCursorChange)
 
 script.on_event(defines.events.on_player_main_inventory_changed, onMainInventoryChanged)
-script.on_event(defines.events.on_player_quickbar_inventory_changed, onQuickInventoryChanged)
 script.on_event(defines.events.on_sector_scanned, onScannedSector)
 script.on_event(defines.events.on_player_dropped_item, onPlayerDropped)
 

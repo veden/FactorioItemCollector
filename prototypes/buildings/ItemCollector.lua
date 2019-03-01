@@ -44,15 +44,19 @@ radarOverlay.pictures.hr_version = {
 
 local chest = util.table.deepcopy(data.raw["container"]["steel-chest"])
 chest.name = "item-collector-chest-item-collector"
+chest.create_ghost_on_death = false
 chest.picture = {
     filename = "__core__/graphics/empty.png",
     priority = "low",
-    width = 46,
-    height = 49,
+    width = 1,
+    height = 1,
     line_length = 1,
     shift = {0.1875, -0.2}
 }
+chest.flags[#radar.flags+1] = "not-deconstructable"
+chest.flags[#radar.flags+1] = "not-blueprintable"
 chest.selection_box = {{-0.485, -0.1}, {0.465, 0.6}}
+-- chest.collision_box = {{-0.1, -0.1}, {0.1, 0.1}}
 chest.collision_mask = {}
 chest.minable.result = "item-collector-base-item-collector"
 
@@ -96,7 +100,7 @@ data:extend({
 	    name = "item-collector-base-item-collector",
 	    icon = "__ItemCollector__/graphics/icon/itemCollectorIcon.png",
 	    icon_size = 32,
-	    flags = {"goes-to-quickbar"},
+	    flags = {},
 	    subgroup = "storage",
 	    order = "a[items]-c[steel-collector]",
 	    place_result = "item-collector-base-item-collector",
@@ -108,7 +112,7 @@ data:extend({
 	    name = "item-collector-base-overlay-item-collector",
 	    icon = "__ItemCollector__/graphics/icon/itemCollectorIcon.png",
 	    icon_size = 32,
-	    flags = {"goes-to-quickbar"},
+	    flags = {},
 	    subgroup = "storage",
 	    order = "a[items]-c[steel-collector]",
 	    place_result = "item-collector-base-overlay-item-collector",
@@ -120,7 +124,8 @@ data:extend({
 	    name = "item-collector-chest-item-collector",
 	    icon = "__ItemCollector__/graphics/icon/itemCollectorIcon.png",
 	    icon_size = 32,
-	    flags = {"goes-to-quickbar"},
+	    flags = {},
+            hidden = true,           
 	    subgroup = "storage",
 	    order = "a[items]-c[steel-collector]",
 	    place_result = "item-collector-chest-item-collector",
@@ -150,8 +155,8 @@ data:extend({
 		    count = 200,
 		    ingredients =
 			{
-			    {"science-pack-1", 1},
-			    {"science-pack-2", 1}
+			    {"automation-science-pack", 1},
+			    {"logistic-science-pack", 1}
 			},
 		    time = 22
 		},
