@@ -112,7 +112,7 @@ data:extend({
 	    name = "item-collector-base-overlay-item-collector",
 	    icon = "__ItemCollector__/graphics/icon/itemCollectorIcon.png",
 	    icon_size = 32,
-	    flags = {},
+	    flags = {"hidden"},
 	    subgroup = "storage",
 	    order = "a[items]-c[steel-collector]",
 	    place_result = "item-collector-base-overlay-item-collector",
@@ -124,7 +124,7 @@ data:extend({
 	    name = "item-collector-chest-item-collector",
 	    icon = "__ItemCollector__/graphics/icon/itemCollectorIcon.png",
 	    icon_size = 32,
-	    flags = {},
+	    flags = {"hidden"},
             hidden = true,           
 	    subgroup = "storage",
 	    order = "a[items]-c[steel-collector]",
@@ -149,7 +149,7 @@ data:extend({
 			recipe = "item-collector-base-item-collector"
 		    }
 		},
-	    prerequisites = {"electric-energy-accumulators-1"},
+	    prerequisites = {"electric-energy-accumulators"},
 	    unit =
 		{
 		    count = 200,

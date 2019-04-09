@@ -1,5 +1,5 @@
 (module BuildScript racket
-  (provide run)
+  (provide all-defined-out)
   
   (require file/zip)
   (require json)
@@ -70,6 +70,12 @@
       (copyDirectory "locale" modFolder)
       (copyDirectory "graphics" modFolder)
       (copyDirectory "prototypes" modFolder)))
+
+  (define (copy)
+    (copyFiles modFolder))
+
+  (define (zipIt)
+    (makeZip modFolder))
   
   (define (run)
     ;;(copyFiles modFolder)
